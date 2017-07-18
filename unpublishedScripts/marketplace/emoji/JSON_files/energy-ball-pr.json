@@ -1,0 +1,65 @@
+{
+    "Entities": [
+        {
+            "clientOnly": 0,
+            "color": {
+                "blue": 0,
+                "green": 104,
+                "red": 255
+            },
+            "colorFinish": {
+                "blue": 0,
+                "green": 104,
+                "red": 255
+            },
+            "colorStart": {
+                "blue": 0,
+                "green": 104,
+                "red": 255
+            },
+            "created": "2017-02-27T22:08:19Z",
+            "dimensions": {
+                "x": 0.19866000115871429,
+                "y": 0.19866000115871429,
+                "z": 0.19866000115871429
+            },
+            "emitAcceleration": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "emitOrientation": {
+                "w": 0.70703047513961792,
+                "x": -0.7071831226348877,
+                "y": -1.5258869098033756e-05,
+                "z": -1.5258869098033756e-05
+            },
+            "emitRate": 360,
+            "emitSpeed": 0.00030000001424923539,
+            "id": "{aaf94d56-cf57-4e6e-9936-e4c59f768c91}",
+            "lastEdited": 1499800294732242,
+            "lastEditedBy": "{936b257a-7a1d-4587-bd3b-f877c8f83209}",
+            "lifespan": 1,
+            "maxParticles": 1370,
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "polarFinish": 1,
+            "queryAACube": {
+                "scale": 0.3440893292427063,
+                "x": -0.17204466462135315,
+                "y": -0.17204466462135315,
+                "z": -0.17204466462135315
+            },
+            "radiusSpread": 9,
+            "rotation": {
+                "w": -0.43423569202423096,
+                "x": -0.53234356641769409,
+                "y": 0.31581109762191772,
+                "z": 0.65441793203353882
+            },
+            "speedSpread": 0.090000003576278687,
+            "textures": "http://hifi-content.s3.amazonaws.com/alan/dev/Particles/Bokeh-Particle.png",
+            "type": "ParticleEffect"
+        }
+    ],
+    "Version": 70
+}

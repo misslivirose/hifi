@@ -1,0 +1,39 @@
+{
+    "Entities": [
+        {
+            "animation": {
+                "currentFrame": 69660.0390625,
+                "running": 1,
+                "url": "https://hifi-content.s3.amazonaws.com/ozan/dev/support/elisa/monster_walk/monster_walk.fbx"
+            },
+            "clientOnly": 0,
+            "created": "2017-07-14T22:46:18Z",
+            "dimensions": {
+                "x": 0.37871584296226501,
+                "y": 0.57074481248855591,
+                "z": 0.38753652572631836
+            },
+            "id": "{e3276499-ad79-4b8d-8f7f-5170b00b8234}",
+            "lastEdited": 1500330118582094,
+            "lastEditedBy": "{54df082f-206d-4b77-8b68-54380191e23f}",
+            "modelURL": "atp:/monster_walk.fbx",
+            "name": "moooooooooooonster",
+            "owningAvatarID": "{00000000-0000-0000-0000-000000000000}",
+            "queryAACube": {
+                "scale": 0.78699421882629395,
+                "x": -0.39349710941314697,
+                "y": -0.39349710941314697,
+                "z": -0.39349710941314697
+            },
+            "rotation": {
+                "w": 1,
+                "x": -1.52587890625e-05,
+                "y": -1.52587890625e-05,
+                "z": -1.52587890625e-05
+            },
+            "shapeType": "static-mesh",
+            "type": "Model"
+        }
+    ],
+    "Version": 70
+}
