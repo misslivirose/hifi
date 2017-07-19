@@ -1,4 +1,4 @@
-{  
+{
     "type":"Model",
     "name":"Monster",
     "modelURL":"https://hifi-content.s3.amazonaws.com/elisalj/emoji_scripts/models/monster_walk.fbx",
@@ -6,7 +6,7 @@
         "running":1,
         "url":"https://hifi-content.s3.amazonaws.com/elisalj/emoji_scripts/models/monster_walk.fbx"
     },
-    "position":{  
+    "position":{
         "x":0,
         "y":0,
         "z":0
@@ -22,19 +22,19 @@
         "z":0.38753652572631836
     },
     "dynamic":true,
-    "angularVelocity":{  
-        "x":0,
-        "y":10,
-        "z":2
-    },
-    "angularDamping":0,
-    "linearDamping":0,
-    "velocity":{  
+    "angularVelocity":{
         "x":0,
         "y":0,
         "z":0
     },
-    "gravity":{  
+    "angularDamping":0,
+    "linearDamping":0,
+    "velocity":{
+        "x":0,
+        "y":0,
+        "z":0
+    },
+    "gravity":{
         "x":0,
         "y":0,
         "z":0

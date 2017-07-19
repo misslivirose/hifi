@@ -88,7 +88,7 @@
         Entities.addEntity(crumbsProperties2);
         Audio.playSound(NOM, {
           position: Entities.getEntityProperties(_this.entityID).position,
-          volume: 2
+          volume: 0.25
         });
         Entities.deleteEntity(_this.entityID);
     }
