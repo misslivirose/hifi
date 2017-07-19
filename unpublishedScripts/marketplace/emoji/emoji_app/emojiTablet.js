@@ -4,23 +4,16 @@
 var DEBUG = true;
 
 if (DEBUG) {
-    //var lib = Script.require("https://hifi-content.s3.amazonaws.com/elisalj/emoji_scripts/emojiLib.js?" + Date.now());
     var lib = Script.require("./emojiLib.js?" + Date.now());
 } else {
     var lib = Script.require("./emojiLib.js");
 }
 
-
-
-
-// https://docs.highfidelity.com/create-and-explore/archives/create-a-tablet-app
 (function() {
 
     var APP_NAME = "EMOJIS";
-    //var APP_URL = "./emojiTabletUI.html";
-    var APP_URL = "https://hifi-content.s3.amazonaws.com/elisalj/emoji_scripts/emojiTabletUI.html?" + Date.now();
-    //var APP_URL = "C:/Users/elisa/Documents/emoji_scripts/emojiTabletUI.html?" + Date.now();
-    // need to put icon here later 
+    var APP_URL = Script.resolvePath("emojiTabletUI.html");
+    // need to put icon here later
     // "50 by 50(or square), white on a transparent background in the SVG file format"
     var APP_ICON = null;
     var tablet = Tablet.getTablet("com.highfidelity.interface.tablet.system");
@@ -53,7 +46,6 @@ if (DEBUG) {
         var url = lib.getEmoji(emojiName, lib.emojiLib);
         if (url != null) {
             emojiJSON = Script.require(url);
-            //print("Emoji JSON: " + JSON.stringify(emojiJSON));
             create3DEmoji(emojiJSON, null);
         } else {
             print("Unable to create emoji");
@@ -74,4 +66,3 @@ if (DEBUG) {
     Script.scriptEnding.connect(cleanup);
 
 }());
-

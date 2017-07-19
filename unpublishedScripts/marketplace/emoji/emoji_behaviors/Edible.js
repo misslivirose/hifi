@@ -1,5 +1,5 @@
 (function () {
-    var NOM_URL = "https://hifi-content.s3.amazonaws.com/elisalj/emoji_scripts/behaviors/sounds/nom-nom.wav";
+    var NOM_URL = Script.resolvePath("sounds/nom-nom.wav");
     var NOM = SoundCache.getSound(Script.resolvePath(NOM_URL));
 
     var _this = this;
