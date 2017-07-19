@@ -43,12 +43,15 @@ if (DEBUG) {
     // Handles emoji button clicks to retrieve the link to the emoji JSON from emojiLib
     function onWebEventReceived(event) {
         var emojiName = (JSON.parse(event)).data;
-        var url = lib.getEmoji(emojiName, lib.emojiLib);
-        if (url != null) {
-            emojiJSON = Script.require(url);
-            create3DEmoji(emojiJSON, null);
-        } else {
+        if(undefined != emojiName){
+          var url = lib.getEmoji(emojiName, lib.emojiLib);
+          if (url != "null") {
+              emojiJSON = Script.require(url);
+              create3DEmoji(emojiJSON, null);
+          }
+          else {
             print("Unable to create emoji");
+          }
         }
     };
     tablet.webEventReceived.connect(onWebEventReceived);

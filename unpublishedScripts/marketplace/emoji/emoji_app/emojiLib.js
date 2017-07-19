@@ -20,7 +20,7 @@ module.exports = {
 			return library[name];
 		} else {
 			print("Unable to locate emoji");
-			return null;
+			return "null";
 		}
 	}
 
