@@ -1101,6 +1101,7 @@ bool EntityTree::filterProperties(EntityItemPointer& existingEntity, EntityItemP
         auto entityID = existingEntity ? existingEntity->getEntityItemID() : EntityItemID();
         accepted = entityEditFilters->filter(position, propertiesIn, propertiesOut, wasChanged, filterType, entityID);
     }
+    
 
     return accepted;
 }
@@ -1391,14 +1392,12 @@ int EntityTree::processEditPacketData(ReceivedMessage& message, const unsigned c
 
     int processedBytes = 0;
     bool isAdd = false;
+    bool isDelete = false;
     // we handle these types of "edit" packets
     switch (message.getType()) {
         case PacketType::EntityErase: {
-            QByteArray dataByteArray = QByteArray::fromRawData(reinterpret_cast<const char*>(editData), maxLength);
-            processedBytes = processEraseMessageDetails(dataByteArray, senderNode);
-            break;
-        }
-
+            isDelete = true;
+            }
         case PacketType::EntityAdd:
             isAdd = true;  // fall through to next case
         case PacketType::EntityPhysics:
@@ -1507,7 +1506,16 @@ int EntityTree::processEditPacketData(ReceivedMessage& message, const unsigned c
                 bool wasChanged = false;
                 // Having (un)lock rights bypasses the filter, unless it's a physics result.
                 FilterType filterType = isPhysics ? FilterType::Physics : (isAdd ? FilterType::Add : FilterType::Edit);
+                if (isDelete) {
+                    filterType = FilterType::Delete;
+                }
                 bool allowed = (!isPhysics && senderNode->isAllowedEditor()) || filterProperties(existingEntity, properties, properties, wasChanged, filterType);
+                if (allowed && isDelete) {
+                    qCDebug(entities) << "Deleted an entity";
+                    QByteArray dataByteArray = QByteArray::fromRawData(reinterpret_cast<const char*>(editData), maxLength);
+                    processedBytes = processEraseMessageDetails(dataByteArray, senderNode);
+                    break;
+                }
                 if (!allowed) {
                     auto timestamp = properties.getLastEdited();
                     properties = EntityItemProperties();
@@ -1875,8 +1883,9 @@ int EntityTree::processEraseMessage(ReceivedMessage& message, const SharedNodePo
                 #endif
 
                 EntityItemID entityItemID(entityID);
+                
                 entityItemIDsToDelete << entityItemID;
-
+                
                 if (wantEditLogging() || wantTerseEditLogging()) {
                     qCDebug(entities) << "User [" << sourceNode->getUUID() << "] deleting entity. ID:" << entityItemID;
                 }
