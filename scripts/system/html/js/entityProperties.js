@@ -574,7 +574,6 @@ function loaded() {
         var elCloneableLimit = document.getElementById("property-cloneable-limit");
 
         var elWantsTrigger = document.getElementById("property-wants-trigger");
-        var elIgnoreIK = document.getElementById("property-ignore-ik");
 
         var elLifetime = document.getElementById("property-lifetime");
         var elScriptURL = document.getElementById("property-script-url");
@@ -855,7 +854,6 @@ function loaded() {
                         elGrabbable.checked = properties.dynamic;
 
                         elWantsTrigger.checked = false;
-                        elIgnoreIK.checked = true;
 
                         elCloneable.checked = false;
                         elCloneableDynamic.checked = false;
@@ -880,11 +878,6 @@ function loaded() {
                                     elWantsTrigger.checked = grabbableData.wantsTrigger;
                                 } else {
                                     elWantsTrigger.checked = false;
-                                }
-                                if ("ignoreIK" in grabbableData) {
-                                    elIgnoreIK.checked = grabbableData.ignoreIK;
-                                } else {
-                                    elIgnoreIK.checked = true;
                                 }
                                 if ("cloneable" in grabbableData) {
                                     elCloneable.checked = grabbableData.cloneable;
@@ -914,7 +907,6 @@ function loaded() {
                         if (!grabbablesSet) {
                             elGrabbable.checked = true;
                             elWantsTrigger.checked = false;
-                            elIgnoreIK.checked = true;
                             elCloneable.checked = false;
                         }
 
@@ -1258,9 +1250,6 @@ function loaded() {
 
         elWantsTrigger.addEventListener('change', function() {
             userDataChanger("grabbableKey", "wantsTrigger", elWantsTrigger, elUserData, false);
-        });
-        elIgnoreIK.addEventListener('change', function() {
-            userDataChanger("grabbableKey", "ignoreIK", elIgnoreIK, elUserData, true);
         });
 
         elCollisionSoundURL.addEventListener('change', createEmitTextPropertyUpdateFunction('collisionSoundURL'));
