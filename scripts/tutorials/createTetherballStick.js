@@ -112,7 +112,6 @@ var STICK_PROPERTIES = {
     userData: JSON.stringify({
         grabbableKey: {
           invertSolidWhileHeld: true,
-          ignoreIK: false
         },
         wearable: {
           joints: {

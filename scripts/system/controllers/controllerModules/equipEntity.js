@@ -501,12 +501,7 @@ EquipHotspotBuddy.prototype.update = function(deltaTime, timestamp, controllerDa
                 }
             }
 
-            var handJointIndex;
-            if (this.ignoreIK) {
-                handJointIndex = this.controllerJointIndex;
-            } else {
-                handJointIndex = MyAvatar.getJointIndex(this.hand === RIGHT_HAND ? "RightHand" : "LeftHand");
-            }
+            var handJointIndex = this.controllerJointIndex;
 
             var reparentProps = {
                 parentID: MyAvatar.SELF_ID,

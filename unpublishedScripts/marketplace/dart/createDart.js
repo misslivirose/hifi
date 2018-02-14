@@ -42,7 +42,6 @@ var dart = {
         grabbableKey: {
             grabbable: true,
             invertSolidWhileHeld: true,
-            ignoreIK: false
         }
     })
 };
@@ -71,7 +70,6 @@ var platform = {
         grabbableKey: {
             grabbable: true,
             invertSolidWhileHeld: true,
-            ignoreIK: false
         }
     })
 };

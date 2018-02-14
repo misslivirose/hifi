@@ -227,7 +227,6 @@
         var Xdynamic = 1;
         var Xcollisionless = 2;
         var Xkinematic = 4;
-        var XignoreIK = 8;
 
         yFlip = Quat.fromPitchYawRollDegrees(0, 180, 0);
 
@@ -244,7 +243,6 @@
             var dynamic = (i & Xdynamic) ? true : false;
             var collisionless = (i & Xcollisionless) ? true : false;
             var kinematic = (i & Xkinematic) ? true : false;
-            var ignoreIK = (i & XignoreIK) ? true : false;
 
             chooseType(i);
         }

@@ -193,9 +193,6 @@ getGrabbableData = function (props) {
     if (!grabbableData.hasOwnProperty("grabbable")) {
         grabbableData.grabbable = true;
     }
-    if (!grabbableData.hasOwnProperty("ignoreIK")) {
-        grabbableData.ignoreIK = true;
-    }
     if (!grabbableData.hasOwnProperty("kinematic")) {
         grabbableData.kinematic = true;
     }

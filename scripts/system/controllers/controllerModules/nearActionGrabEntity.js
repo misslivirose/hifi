@@ -62,21 +62,13 @@ Script.include("/~/system/libraries/cloneEntityUtils.js");
             Controller.triggerHapticPulse(HAPTIC_PULSE_STRENGTH, HAPTIC_PULSE_DURATION, this.hand);
 
             var grabbableData = getGrabbableData(targetProps);
-            this.ignoreIK = grabbableData.ignoreIK;
             this.kinematicGrab = grabbableData.kinematic;
 
-            var handRotation;
-            var handPosition;
-            if (this.ignoreIK) {
-                var controllerID =
-                    (this.hand === RIGHT_HAND) ? Controller.Standard.RightHand : Controller.Standard.LeftHand;
-                var controllerLocation = getControllerWorldLocation(controllerID, false);
-                handRotation = controllerLocation.orientation;
-                handPosition = controllerLocation.position;
-            } else {
-                handRotation = this.getHandRotation();
-                handPosition = this.getHandPosition();
-            }
+            var controllerID = (this.hand === RIGHT_HAND) ? Controller.Standard.RightHand : Controller.Standard.LeftHand;
+            var controllerLocation = getControllerWorldLocation(controllerID, false);
+            var handRotation = controllerLocation.orientation;
+            var handPosition = controllerLocation.position;
+          
 
             var objectRotation = targetProps.rotation;
             this.offsetRotation = Quat.multiply(Quat.inverse(handRotation), objectRotation);
@@ -99,7 +91,6 @@ Script.include("/~/system/libraries/cloneEntityUtils.js");
                 ttl: ACTION_TTL,
                 kinematic: this.kinematicGrab,
                 kinematicSetVelocity: true,
-                ignoreIK: this.ignoreIK
             });
             if (this.actionID === Uuid.NULL) {
                 this.actionID = null;

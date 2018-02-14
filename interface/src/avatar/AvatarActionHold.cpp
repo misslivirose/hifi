@@ -78,10 +78,6 @@ void AvatarActionHold::prepareForPhysicsSimulation() {
         glm::quat avatarRigidBodyRotation;
         getAvatarRigidBodyLocation(avatarRigidBodyPosition, avatarRigidBodyRotation);
 
-        if (_ignoreIK) {
-            return;
-        }
-
         glm::vec3 palmPosition;
         glm::quat palmRotation;
         if (_hand == "right") {
@@ -147,7 +143,7 @@ bool AvatarActionHold::getTarget(float deltaTimeStep, glm::quat& rotation, glm::
                 angularVelocity = pose.getAngularVelocity();
             }
 
-            if (_ignoreIK && pose.isValid()) {
+            if (pose.isValid()) {
 
                 // this position/rotation should be the same as the one in scripts/system/libraries/controllers.js
                 // otherwise things will do a little hop when you grab them.
@@ -327,7 +323,6 @@ bool AvatarActionHold::updateArguments(QVariantMap arguments) {
     QUuid holderID;
     bool kinematic;
     bool kinematicSetVelocity;
-    bool ignoreIK;
     bool needUpdate = false;
 
     bool somethingChanged = ObjectDynamic::updateArguments(arguments);
@@ -372,12 +367,6 @@ bool AvatarActionHold::updateArguments(QVariantMap arguments) {
             kinematicSetVelocity = _kinematicSetVelocity;
         }
 
-        ok = true;
-        ignoreIK = EntityDynamicInterface::extractBooleanArgument("hold", arguments, "ignoreIK", ok, false);
-        if (!ok) {
-            ignoreIK = _ignoreIK;
-        }
-
         if (somethingChanged ||
             relativePosition != _relativePosition ||
             relativeRotation != _relativeRotation ||
@@ -385,8 +374,7 @@ bool AvatarActionHold::updateArguments(QVariantMap arguments) {
             hand != _hand ||
             holderID != _holderID ||
             kinematic != _kinematic ||
-            kinematicSetVelocity != _kinematicSetVelocity ||
-            ignoreIK != _ignoreIK) {
+            kinematicSetVelocity != _kinematicSetVelocity) {
             needUpdate = true;
         }
     });
@@ -402,7 +390,6 @@ bool AvatarActionHold::updateArguments(QVariantMap arguments) {
             _holderID = holderID;
             _kinematic = kinematic;
             _kinematicSetVelocity = kinematicSetVelocity;
-            _ignoreIK = ignoreIK;
             _active = true;
 
             auto ownerEntity = _ownerEntity.lock();
@@ -426,7 +413,6 @@ QVariantMap AvatarActionHold::getArguments() {
         arguments["hand"] = _hand;
         arguments["kinematic"] = _kinematic;
         arguments["kinematicSetVelocity"] = _kinematicSetVelocity;
-        arguments["ignoreIK"] = _ignoreIK;
     });
     return arguments;
 }
